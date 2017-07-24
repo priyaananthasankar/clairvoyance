@@ -117,6 +117,22 @@ export interface RecommendationBuildParameters {
   enableU2I: boolean
 }
 
+interface RecommendedItemInfo {
+  id: string
+  name: string
+  metadata: string
+}
+
+export interface RecommendedItemSetInfo {
+  items: RecommendedItemInfo[]
+  rating: number
+  reasoning: string[]
+}
+
+export interface RecommendedItemSetInfoList {
+  recommendedItems: RecommendedItemSetInfo[]
+}
+
 export interface SarBuildParameters {
   supportThreshold: number
   coocurrenceUnit: string
