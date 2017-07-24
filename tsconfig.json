@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outFile": "dist/server.js"
+  },
+  "include": [
+    "server"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
