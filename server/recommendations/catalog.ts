@@ -1,6 +1,6 @@
 import * as request from 'superagent'
 import { recommendations } from '../../config'
-import { CatalogImportStats, ErrorResponse } from './types'
+import { CatalogImportStats, CatalogItemsPage, ErrorResponse } from './types'
 
 const { subscriptionKey: SUBSCRIPTION_KEY } = recommendations
 
@@ -17,3 +17,19 @@ export const uploadCatalog = async (
     .set('Ocp-Apim-Subscription-Key', SUBSCRIPTION_KEY)
     .query({ catalogDisplayName })
     .send(file)).body
+
+export const downloadCatalog = async (
+  modelId: string,
+  top: number,
+  skip: number,
+  maxPageSize: number
+): Promise<CatalogItemsPage | ErrorResponse> =>
+  (await request
+    .get(baseURL(modelId))
+    .set('Ocp-Apim-Subscription-Key', SUBSCRIPTION_KEY)
+    .query({
+      maxPageSize,
+      skip,
+      top
+    })
+    .send()).body

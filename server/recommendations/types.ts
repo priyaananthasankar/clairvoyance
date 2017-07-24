@@ -41,6 +41,11 @@ export interface CatalogImportStats {
   sampleErrorDetails: ErrorDetail[]
 }
 
+export interface CatalogItemsPage {
+  value: ICatalogLine[]
+  nextLink: string
+}
+
 export interface DateSplitterParameters {
   splitDate: string
 }
@@ -83,10 +88,24 @@ export interface FbtBuildParameters {
   popularItemBenchmarkWindow: number
 }
 
+interface ICatalogLine {
+  id: string
+  name: string
+  category: string
+  description: string
+  features: ItemFeature[]
+  metadata: string
+}
+
 export interface InternalError {
   code: string
   message: string
   innerError: undefined
+}
+
+interface ItemFeature {
+  name: string
+  value: string
 }
 
 export interface ModelInfo {
