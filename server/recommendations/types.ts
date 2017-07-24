@@ -83,6 +83,17 @@ export interface ModelRequestInfo {
   description: string
 }
 
+export interface OperationInfo<T> {
+  type: string
+  status: string
+  createdDateTime: string
+  lastActionDatetime: string
+  percentComplete: number
+  message: string
+  resourceLocation: string
+  result: T
+}
+
 export interface RandomSplitterParameters {
   testPercent: number
   randomSeed: number
