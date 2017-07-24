@@ -6,6 +6,7 @@
   ],
   "rules": {
     "no-unused-variable": false,
-    "semicolon": [true, "never"]
+    "semicolon": [true, "never"],
+    "interface-name": [true, "never-prefix"]
   }
 }
