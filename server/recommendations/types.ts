@@ -33,6 +33,14 @@ export interface BuildRequestInfo {
 
 type BuildType = 'recommendation' | 'rank' | 'fbt' | 'sar'
 
+export interface CatalogImportStats {
+  processedLineCount: number
+  errorLineCount: number
+  importedLineCount: number
+  errorSummary: ErrorStats[]
+  sampleErrorDetails: ErrorDetail[]
+}
+
 export interface DateSplitterParameters {
   splitDate: string
 }
@@ -45,6 +53,22 @@ export interface Error {
 
 export interface ErrorResponse {
   error: Error
+}
+
+interface ErrorDetail {
+  errorCode: string
+  errorText: string
+  sampleErrorLines: ErrorLine[]
+}
+
+interface ErrorLine {
+  lineNumber: number
+  lineText: string
+}
+
+interface ErrorStats {
+  errorCode: string
+  errorCodeCount: number
 }
 
 export interface FbtBuildParameters {
