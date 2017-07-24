@@ -8,7 +8,8 @@ CF.Key.set(KEY)
 #Create an empty person group
 personGroupID = 'mygroup'
 #if person group is not already there, then create one, else continue
-personID = '0438a6a4-11bf-456d-a2db-33daf460d040'
+'''
+personID = 'b95de0f6-ded2-4178-ae7b-d144f2f9b0af'
 try:
     x = CF.person_group.get(personGroupID)
     #print (x)
@@ -21,17 +22,17 @@ except:
 try:
     y = CF.person.get(personGroupID, personID)
 except:
-    response_person = CF.person.create(personGroupID, 'Frank')
+    response_person = CF.person.create(personGroupID, 'Whitney')
     print (response_person)
 
 trer = CF.person.lists(personGroupID)
 print (trer)
-'''
+
 #create a list of faces for a specific id and loop through them, adding them to the detected faces
-face_list = ['http://imb.ulximg.com/image/full/artist/1392853723_dd7bf404602d4647b315404d9a76a123.jpg/a245b9e81dc871ea925875c94046d072/1392853723_frank_ocean_86.jpg', 'http://imb.ulximg.com/image/full/artist/1392853723_dd7bf404602d4647b315404d9a76a123.jpg/a245b9e81dc871ea925875c94046d072/1392853723_frank_ocean_86.jpg', 'http://static.highsnobiety.com/wp-content/uploads/2017/02/24192031/frank-ocean-beats-1-radio-show-blonded-radio-01-1200x801.jpg']
+face_list = ['http://quitmumbling.com/public_html/wp-content/uploads/2012/02/whitney1.jpg', 'http://images5.fanpop.com/image/photos/30100000/Whitney-Houston-whitney-houston-30123565-738-923.jpg', 'https://worldofblackheroes.files.wordpress.com/2012/02/whitney-houston-6.jpg']
 for each_image in face_list:
     pers_face_id = CF.person.add_face(each_image, personGroupID, personID)
-'''
+
 
 empty_test = CF.person_group.train(personGroupID)
 
@@ -41,11 +42,13 @@ print (status)
 #Define Frank
 #Id of person group for Frank and others with name of Frank 
 
+'''
 
 
+#image to test and try to identify 
+try_out_image = 'http://thatgrapejuice.net/wp-content/uploads/2016/08/frank-ocean-endless-thatgrapejuice-600x600.jpg'
+retrn_lst = CF.face.detect(try_out_image)
+#print (retrn_lst[0]['faceId'])
 
-# You can use this example JPG or replace the URL below with your own URL to a JPEG image.
-#img_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
-#img_url = 'http://theurbantwist.com/wp-content/uploads/2016/10/10192016-frank-ocean-1024x768.jpg'
-#result = CF.face.detect(img_url)
-#print (result)
+answr = CF.face.identify([retrn_lst[0]['faceId']], personGroupID)
+print (CF.person.get(personGroupID, answr[0]['candidates'][0]['personId']))
