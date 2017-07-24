@@ -1,6 +1,7 @@
 import * as request from 'superagent'
 import { recommendations } from '../../config'
 import {
+  BuildInfo,
   BuildInfoList,
   BuildModelResponse,
   BuildRequestInfo,
@@ -21,6 +22,15 @@ export const createBuild = async (
     .set('Ocp-Acim_Subscription-Key', SUBSCRIPTION_KEY)
     .set('Content-Type', 'application/json')
     .send(buildRequestInfo)).body
+
+export const getBuildInfo = async (
+  modelId: string,
+  buildId: string
+): Promise<BuildInfo | ErrorResponse> =>
+  (await request
+    .get(baseURL(modelId) + `/${buildId}`)
+    .set('Ocp-Acim-Subscription-Key', SUBSCRIPTION_KEY)
+    .send()).body
 
 export const getBuilds = async (
   modelId: string,
