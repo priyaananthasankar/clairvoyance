@@ -23,6 +23,15 @@ export const createBuild = async (
     .set('Content-Type', 'application/json')
     .send(buildRequestInfo)).body
 
+export const deleteBuild = async (
+  modelId: string,
+  buildId: string
+): Promise<void | ErrorResponse> =>
+  (await request
+    .delete(baseURL(modelId) + `/${buildId}`)
+    .set('Ocp-Acim-Subscription-Key', SUBSCRIPTION_KEY)
+    .send()).body
+
 export const getBuildInfo = async (
   modelId: string,
   buildId: string
