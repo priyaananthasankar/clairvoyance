@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "module": "system",
+    "module": "commonjs",
     "noImplicitAny": true,
     "sourceMap": true,
-    "outFile": "dist/server.js"
+    "outDir": "dist"
   },
   "include": [
     "server"
