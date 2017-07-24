@@ -5,8 +5,12 @@ const app = express()
 
 app.set('port', process.env.PORT || 3000)
 
-app.get('*', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Hello, world!')
+})
+
+app.get('*', (_req, res) => {
+  res.send('Page not found!')
 })
 
 const server = app.listen(app.get('port'), () => {
