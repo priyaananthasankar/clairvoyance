@@ -31,7 +31,7 @@ export const recommendUser = async (
   modelId: string,
   userId: string,
   numberOfResults: number,
-  itemIds: string[],
+  itemIds: string[] = [],
   includeMetadata: boolean = false,
   buildId: number = -1
 ): Promise<RecommendedItemSetInfoList | ErrorResponse> =>

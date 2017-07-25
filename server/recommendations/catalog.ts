@@ -5,7 +5,7 @@ import { CatalogImportStats, CatalogItemsPage, ErrorResponse } from './types'
 const { subscriptionKey: SUBSCRIPTION_KEY } = recommendations
 
 const baseURL = (modelId: string) =>
-  `https://westus.api.cognitive.microsoft.com/recommendations/v4.0/operations/${modelId}`
+  `https://westus.api.cognitive.microsoft.com/recommendations/v4.0/models/${modelId}`
 
 export const uploadCatalog = async (
   modelId: string,

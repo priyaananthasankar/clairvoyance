@@ -215,3 +215,12 @@ export type UpdateModelRequestInfo =
   | UpdateModelRequestActiveBuildId
   | UpdateModelRequestDescription
   | UpdateModelRequestActiveBuildId & UpdateModelRequestDescription
+
+export interface UsageImportStats {
+  fileId: string
+  processedLineCount: number
+  errorLineCount: number
+  importedLineCount: number
+  errorSummary: ErrorStats[]
+  sampleErrorDetails: ErrorDetail[]
+}
